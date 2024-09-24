@@ -1,15 +1,14 @@
 // starting point of the application
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import homeRoute from './src/routes/homeRoute';
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
-// default Http Route is slash(/)
-app.get('/', (req: Request, res: Response) => {
-  return res.send('Welcome to the Eagle Eye Book Store');
-});
+// manage routes
+app.use('/', homeRoute);
 
 // server connection
 app.listen(port, () => {
